@@ -1,0 +1,11 @@
+---
+additional:
+- docker-fpm
+- lacework-manifest
+
+
+files:
+- '!README.md'
+- '!.secrets.baseline'
+- '!**/template-sync.yml'
+- '!.github/workflows/sync.yml'
