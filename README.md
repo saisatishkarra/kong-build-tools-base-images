@@ -1,14 +1,7 @@
-# Generic Github Repository Template
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kong/kong-build-tools-base-images)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kong/kong-build-tools-base-images/Build%20and%20Optionally%20Release)
 
-Generic github repository template that keeps child repositories sync'd
+# Kong Build Tools Base Image
 
-Use this template as a sensible baseline for new github repositories.
-
-## Instructions
-
-- Create template from repository
-- From the new repository settings page enable "Automatically delete head branches" as well as "Allow auto-merge"
-- From the new repository branches page create branch protection rule for main that requires "pre-commit" to pass as well as "Require a pull request before merging"
-- Following our [Github bot guidline documentation](https://konghq.atlassian.net/wiki/spaces/ENGEN/pages/2720268304/How+To+-+Github+Automation+Guidelines) add a github and dependabot secret for AUTO_MERGE_TOKEN
-- Open a pull request on the new repository that seeds the secret baseline file `detect-secrets scan > .secrets.baseline` as well as a sensible README.md
-- Update the .github/template-sync.yml file in this repository
+Base image Dockerfiles used by [kong-build-tools](https://github.com/Kong/kong-build-tools)
