@@ -21,5 +21,6 @@ RUN yum update -y && \
         git \
         cmake \
         rpm-build \
+        rpm-sign \
     && curl -sSL https://github.com/mikefarah/yq/releases/download/1.15.0/yq_linux_amd64 -o /usr/local/bin/yaml \
     && chmod +x /usr/local/bin/yaml
