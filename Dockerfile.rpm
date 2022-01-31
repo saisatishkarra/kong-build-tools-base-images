@@ -8,7 +8,6 @@ RUN yum update -y && \
         readline-devel \
         pcre-devel \
         openssl-devel \
-        gcc \
         curl \
         unzip \
         zlib-devel \
