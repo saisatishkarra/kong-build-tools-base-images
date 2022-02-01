@@ -1,6 +1,7 @@
 FROM centos:7
 
-RUN yum update -y && \
+RUN yum -y install epel-release && \
+    yum update -y && \
     yum -y install \
         ca-certificates \
         wget \
@@ -19,8 +20,9 @@ RUN yum update -y && \
         perl \
         m4 \
         git \
-        cmake \
+        cmake3 \
         rpm-build \
         rpm-sign \
+    && ln -s /usr/bin/cmake3 /usr/bin/cmake \
     && curl -sSL https://github.com/mikefarah/yq/releases/download/1.15.0/yq_linux_amd64 -o /usr/local/bin/yaml \
     && chmod +x /usr/local/bin/yaml

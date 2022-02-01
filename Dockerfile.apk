@@ -1,4 +1,4 @@
-FROM alpine:3.15.0
+FROM alpine:3.8
 
 RUN apk update \
     && apk upgrade \
@@ -7,13 +7,11 @@ RUN apk update \
     && apk add --virtual build-deps \
         make \
         gcc \
-        make \
         g++ \
         zlib-dev \
         musl-dev \
         pcre-dev \
         openssl-dev \
-        zlib-dev \
         ncurses-dev \
         readline-dev \
         curl \
@@ -33,5 +31,9 @@ RUN apk update \
         bash \
         go \
         cmake \
+        libc-dev \
+        sed \
+    && sed -i'' 's/^mozilla\/DST_Root_CA_X3.crt$/!mozilla\/DST_Root_CA_X3.crt/g' /etc/ca-certificates.conf \
+    && update-ca-certificates \
     && curl -sSL https://github.com/mikefarah/yq/releases/download/1.15.0/yq_linux_amd64 -o /usr/local/bin/yaml \
     && chmod +x /usr/local/bin/yaml
