@@ -35,8 +35,8 @@ jobs:
         ref: origin
         
         
-#     - run: |
-#         [[ -z $(git status -s) ]] || (git add . && git commit -am "pre-commit fixes")
-#         git push -u origin ${{ github.base_ref }}
+    - run: |
+        [[ -z $(git status -s) ]] || (git add . && git commit -am "pre-commit fixes")
+        git push -u origin origin/${{ github.ref }}
         
 
