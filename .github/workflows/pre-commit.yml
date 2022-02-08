@@ -3,7 +3,7 @@
 name: pre-commit
 
 on:  # yamllint disable-line rule:truthy
-  pull_request_target:
+  pull_request:
   push:
     branches:
     - main
@@ -14,6 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2.4.0
       with:
+        ref: ${{ github.head_ref }}
         fetch-depth: 0
     - uses: actions/setup-python@v2
     - name: install shfmt
@@ -26,17 +27,10 @@ jobs:
     
     - uses: fregante/setup-git-user@v1
       if: ${{ always() }}
-      
-#     - uses: actions-go/push@master
-#       if: ${{ always() }}
-#       with:
-#         commit-message: 'pre-commit fixes'
-#         create-commit: true
-#         ref: origin
         
     - if: ${{ always() && github.event_name == 'pull_request' }}
       run: |
         [[ -z $(git status -s) ]] || (git add . && git commit -am "pre-commit fixes")
-        git push -u origin origin/${{ github.head_ref }}
+        git push
         
 
