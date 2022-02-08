@@ -32,6 +32,7 @@ jobs:
       with:
         commit-message: 'pre-commit fixes'
         create-commit: true
+        ref: origin
         
         
 #     - run: |
