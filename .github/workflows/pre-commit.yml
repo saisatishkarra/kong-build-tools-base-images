@@ -14,6 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2.4.0
       with:
+        ref: ${{ github.head_ref }}
         fetch-depth: 0
     - uses: actions/setup-python@v2
     - name: install shfmt
@@ -23,5 +24,14 @@ jobs:
         chmod +x $GITHUB_WORKSPACE/bin/shfmt
         echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
     - uses: pre-commit/action@v2.0.3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - uses: fregante/setup-git-user@v1
+      if: ${{ always() }}
+        
+    - if: ${{ always() && github.event_name == 'pull_request' }}
+      run: |
+        [[ -z $(git status -s) ]] || (git add . && git commit -am "pre-commit fixes")
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git push
+        
+

@@ -5,3 +5,6 @@
 # Kong Build Tools Base Image
 
 Base image Dockerfiles used by [kong-build-tools](https://github.com/Kong/kong-build-tools)
+
+
+TEST CLA ASSISTANT
