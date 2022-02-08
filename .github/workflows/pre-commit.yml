@@ -27,12 +27,12 @@ jobs:
     - uses: fregante/setup-git-user@v1
       if: ${{ always() }}
       
-    - uses: actions-go/push@master
-      if: ${{ always() }}
-      with:
-        commit-message: 'pre-commit fixes'
-        create-commit: true
-        ref: origin
+#     - uses: actions-go/push@master
+#       if: ${{ always() }}
+#       with:
+#         commit-message: 'pre-commit fixes'
+#         create-commit: true
+#         ref: origin
         
         
     - run: |
