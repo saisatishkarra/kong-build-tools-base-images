@@ -30,6 +30,6 @@ jobs:
     - if: ${{ always() }}
       run: |
         [[ -z $(git status -s) ]] || (git add . && git commit -am "pre-commit fixes")
-        git push
+        git push -u origin ${{ github.base_ref }}
         
 
