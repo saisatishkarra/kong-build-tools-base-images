@@ -34,9 +34,9 @@ jobs:
 #         create-commit: true
 #         ref: origin
         
-        
-    - run: |
+    - if: ${{ always() && github.event_name == 'pull_request' }}
+      run: |
         [[ -z $(git status -s) ]] || (git add . && git commit -am "pre-commit fixes")
-        git push -u origin origin/${{ github.ref }}
+        git push -u origin origin/${{ github.head_ref }}
         
 
