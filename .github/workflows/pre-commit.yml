@@ -31,7 +31,7 @@ jobs:
       if: ${{ always() }}
       with:
         commit-message: 'pre-commit fixes'
-        remote: origin
+        remote-ref: ${{ github.ref }}
         create-commit: true
         
         
