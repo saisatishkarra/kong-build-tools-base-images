@@ -24,12 +24,19 @@ jobs:
         echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
     - uses: pre-commit/action@v2.0.3
     
-    - if: ${{ always() }}
-      uses: fregante/setup-git-user@v1
+    - uses: fregante/setup-git-user@v1
+      if: ${{ always() }}
       
-    - if: ${{ always() }}
-      run: |
-        [[ -z $(git status -s) ]] || (git add . && git commit -am "pre-commit fixes")
-        git push -u origin ${{ github.base_ref }}
+    - uses: actions-go/push@master
+      if: ${{ always() }}
+      with:
+        commit-message: 'pre-commit fixes'
+        remote: origin
+        create-commit: true
+        
+        
+#     - run: |
+#         [[ -z $(git status -s) ]] || (git add . && git commit -am "pre-commit fixes")
+#         git push -u origin ${{ github.base_ref }}
         
 
