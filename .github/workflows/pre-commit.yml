@@ -23,5 +23,9 @@ jobs:
         chmod +x $GITHUB_WORKSPACE/bin/shfmt
         echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
     - uses: pre-commit/action@v2.0.3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: fregante/setup-git-user@v1
+    - run: |
+        [[ -z $(git status -s) ]] || (git add . && git commit -am "pre-commit fixes")
+        git push
+        
+
